@@ -1,18 +1,11 @@
-# node-redis-stream-list
+"use strict";
+const path = require("path"),
+    {Readable, Writable} = require(path.join(__dirname, "..")),
+    {PassThrough} = require("stream"),
+    redis = require("redis"),
+    redisClient = redis.createClient(),
+    process = require("process");
 
-Node readable and writable streams for redis list
-
-## Readable
-Readable stream read all list elements using redis [lpop](https://redis.io/commands/lpop).
-When there is no more elements in the list, stream emits an end event.
-
-## Writable
-Writable stream push elements at the end of the list using redis [rpush](https://redis.io/commands/rpush).
-When all elements are pushed, stream emit a finish event.
-
-## Usage
-In this sample you will see how to write object and read object from a list
-```javascript
 const writeStream = new Writable({
     "redisClient": redisClient,
     "listKey": "sample-list-key",
@@ -37,4 +30,3 @@ input.pipe(writeStream).on("finish", () => {
         redisClient.quit();
     });
 });
-```

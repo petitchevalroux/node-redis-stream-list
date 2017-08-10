@@ -1,26 +1,28 @@
 {
-  "name": "node-project",
-  "version": "1.0.0",
-  "description": "Empty node project",
-  "scripts": {
-    "test": "make tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://github.com/petitchevalroux/node-project.git"
-  },
-  "author": "Patrick Poulain",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/petitchevalroux/node-project/issues"
-  },
-  "homepage": "https://github.com/petitchevalroux/node-project#readme",
-  "devDependencies": {
-    "eslint": "^4.4.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "istanbul": "^0.4.5",
-    "js-beautify": "^1.6.14",
-    "mocha": "^3.5.0",
-    "sinon": "^3.2.0"
-  }
+    "name": "@petitchevalroux/node-redis-stream-list",
+    "version": "0.0.0",
+    "description": "Node readable and writable streams for redis list",
+    "scripts": {
+        "test": "make tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://github.com/petitchevalroux/node-redis-stream-list.git"
+    },
+    "main": "src/index.js",
+    "author": "Patrick Poulain",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/petitchevalroux/node-redis-stream-list/issues"
+    },
+    "homepage": "https://github.com/petitchevalroux/node-redis-stream-list#readme",
+    "devDependencies": {
+        "eslint": "^4.4.1",
+        "eslint-plugin-promise": "^3.5.0",
+        "istanbul": "^0.4.5",
+        "js-beautify": "^1.6.14",
+        "mocha": "^3.5.0",
+        "redis-mock": "^0.20.0",
+        "sinon": "^3.2.0"
+    }
 }
