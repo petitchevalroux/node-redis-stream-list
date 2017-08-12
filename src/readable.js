@@ -12,17 +12,26 @@ class RedisReadableListStream extends Readable {
         this.listKey = options.listKey;
     }
 
-    pop() {
+    pushDataToBuffer() {
         const self = this;
-        this.redisClient.lpop(this.listKey, function(err, value) {
-            if (self.push(value)) {
-                self.pop();
+        this.redisClient.lpop(this.listKey, (err, value) => {
+            if (err) {
+                self.emit("error", err);
+                return;
+            }
+            if (self.push(value) && value !== null) {
+                self.pushDataToBuffer();
+            } else {
+                delete self.buffering;
             }
         });
     }
 
     _read() {
-        this.pop();
+        if (!this.buffering) {
+            this.buffering = true;
+            this.pushDataToBuffer();
+        }
     }
 }
 
