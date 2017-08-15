@@ -12,9 +12,23 @@ class RedisReadableListStream extends Readable {
         this.listKey = options.listKey;
     }
 
+    pop(callback) {
+        const self = this;
+        this.getRedisClient((err, client) => {
+            if (err) {
+                return callback(err);
+            }
+            client.lpop(self.listKey, callback);
+        });
+    }
+
+    getRedisClient(callback) {
+        callback(null, this.redisClient);
+    }
+
     pushDataToBuffer() {
         const self = this;
-        this.redisClient.lpop(this.listKey, (err, value) => {
+        this.pop((err, value) => {
             if (err) {
                 self.emit("error", err);
                 return;
