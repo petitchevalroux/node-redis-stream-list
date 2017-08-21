@@ -41,6 +41,18 @@ class RedisReadableListStream extends Readable {
         });
     }
 
+    unserializeObject(value, callback) {
+        if (!this.objectMode) {
+            return callback(null, value);
+        }
+        try {
+            const object = JSON.parse(value);
+            callback(null, object);
+        } catch (err) {
+            callback(err);
+        }
+    }
+
     _read() {
         if (!this.buffering) {
             this.buffering = true;

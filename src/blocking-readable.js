@@ -28,7 +28,7 @@ class RedisBlockingReadableListStream extends Readable {
                         "Wrong list name when poping element"
                     ));
                 }
-                callback(null, value[1]);
+                self.unserializeObject(value[1], callback);
             });
         });
     }

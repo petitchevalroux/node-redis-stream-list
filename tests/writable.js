@@ -81,9 +81,9 @@ describe("Writable stream", () => {
         input.pipe(writable)
             .on("finish", () => {
                 assert(rPushSpy.calledWith("list",
-                    "element 1"));
+                    JSON.stringify("element 1")));
                 assert(rPushSpy.calledWith("list",
-                    "element 2"));
+                    JSON.stringify("element 2")));
                 done();
             });
         input.write("element 1");
