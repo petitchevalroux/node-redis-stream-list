@@ -23,7 +23,10 @@ class RedisBlockingReadableListStream extends Readable {
                     2) {
                     return callback(null, null);
                 }
-                if (value[0] !== self.listKey) {
+                const expectedKey = (client.options &&
+                    client.options.prefix ?
+                    client.options.prefix : "") + self.listKey;
+                if (value[0] !== expectedKey) {
                     return callback(new Error(
                         "Wrong list name when poping element"
                     ));
