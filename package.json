@@ -1,6 +1,6 @@
 {
     "name": "@petitchevalroux/redis-stream-list",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Node readable, blocking readable, writable and fifo streams for redis list",
     "scripts": {
         "test": "make tests"
